@@ -15,21 +15,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
-          email: _emailController.text, password: _passwordController.text);
+              email: _emailController.text, password: _passwordController.text);
 
       if (userCredential.user != null) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text("Registration successful!"),
         ));
 
-        // Navigate back to login screen
+        // Back to Login Page
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => LoginScreen()),
         );
       }
     } catch (e) {
-      // Show error message
+      // Error Message
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("Registration failed. Please try again."),
       ));

@@ -31,6 +31,7 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        minSdkVersion 23
     }
 
     buildTypes {
@@ -40,8 +41,16 @@ android {
             signingConfig = signingConfigs.debug
         }
     }
-}
 
-flutter {
-    source = "../.."
+    buildscript {
+        dependencies {
+            classpath 'com.google.gms:google-services:4.4.2' // Ensure this is added
+        }
+
+
+    }
+
+    flutter {
+        source = "../.."
+    }
 }

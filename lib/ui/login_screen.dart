@@ -16,17 +16,17 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(
-          email: _emailController.text, password: _passwordController.text);
+              email: _emailController.text, password: _passwordController.text);
 
       if (userCredential.user != null) {
-        // Navigate to the homepage if login is successful
+        // Login success -> Homepage
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => HomePage()),
         );
       }
     } catch (e) {
-      // Show error message
+      // Error Message
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("Login failed. Please check your credentials."),
       ));
